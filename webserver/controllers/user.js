@@ -26,6 +26,7 @@ function saveUser(req,res){
         employee.surname2= params.surname2;
         employee.DNI= params.DNI;
         employee.personal_phone= params.personal_phone;
+        employee.personal_email=params.personal_email;
         employee.NSS= params.NSS;
         employee.created_at= params.created_at;
         employee.category= params.category;
@@ -46,8 +47,7 @@ function saveUser(req,res){
                 }else{
                     //Hasheamos la password y stored-amos los datos del empelado.
                     bcrypt.hash(params.password,null,(err,hash)=>{
-                        employee.password=hash;
-        
+                        employee.password=hash;      
         
         
                      employee.save((err,employeeStored)=>{
@@ -67,11 +67,7 @@ function saveUser(req,res){
                 });
 
             }
-        });
-
-        
-          
-        
+        });             
 
     } else{
        res.status(403).send('Te faltan campos');

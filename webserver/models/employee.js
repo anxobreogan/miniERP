@@ -19,11 +19,7 @@ const EmployeeSchema= Schema ({
     work_center:String,
     role:String,
     password:String,
-    // nombre: String,
-    // apellido: String,
-    // telefono: Number,
-    // email: String,
-    // password:String
+    
 });
 
 module.exports=mongoose.model('Employee',EmployeeSchema);
