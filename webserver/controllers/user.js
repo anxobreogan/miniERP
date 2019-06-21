@@ -2,21 +2,30 @@
 const bcrypt= require('bcrypt');
 const Employee= require('../models/employee');
 
-//con esto ya tengo el modelo cargado.
 
-function home(req,res){
-    
-    res.status(200).send('Todo ok en home');
-  }
 
-function prueba (req,res){
-    console.log(req.body);
-    res.status(200).send('Todo ok en prueba');
-};
+
+
 
 function saveUser(req,res){
     const params=req.body;
-    // console.log(params);
+    const {personal_email,password}=params;
+    console.log(password);
+    // const schema= Joi.object().keys({
+    //     //personal_email:Joi.string().trim().email().required(),
+    //     password : Joi.string().min(3).max(10).required()
+    // });
+
+    // Joi.validate(password,schema,(err,result)=>{
+
+    //     if(err){
+    //         console.log(err);
+    //        // res.send('error');
+    //     }
+    //     console.log(result);
+    //     //res.send('Exito');
+
+    // });    // console.log(params);
     let employee= new Employee();
 
     // Certificamos que se están pasando todos los datos que necesitamos como mínimo.
@@ -58,6 +67,7 @@ function saveUser(req,res){
                         //Grabamos los datos del empleado.
                         if(employeeStored){
                             res.status(200).send({employee:employeeStored});
+                            console.log(employeeStored);
                         } else {
         
         
@@ -76,7 +86,6 @@ function saveUser(req,res){
 }
 //Exporto las funciones fuera del fichero.
 module.exports= {
-      home,
-      prueba,
+      
       saveUser
  };

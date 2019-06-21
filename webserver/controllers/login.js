@@ -17,16 +17,20 @@ function searchUser(req,res,next){
             res.status(500).send({message:'error'})
         } else if (user){
             const userParams=user;
-            const {DNI}=userParams;
-            res.status(200).send(user);
-            const userParams2=(userParams[0]);
-            console.log(userParams2.DNI);
-            console.log('Destructuring objetos'+ DNI);
+            const [{DNI}]=userParams;
+            res.json({DNI});
+            // const userParams2=(userParams[0]);
+            // console.log(userParams2.DNI);
+            // console.log('Destructuring objetos'+ DNI);
 
         }
 
     });
 };
+
+
+
+
  
 
 function userLogin(req,res,next){
